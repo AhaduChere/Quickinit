@@ -6,14 +6,13 @@ A command-line tool I developed to streamline project structuring and learn Rust
 [GitHub Releases](https://github.com/AhaduChere/Quickinit/releases/tag/v1.0.0)
 ### Move the binary to a directory in system PATH
 
-bash
+```bash
 sudo mv Quickinit /usr/local/bin/
-
-
+```
 or
-
-bash
+```bash
 sudo mv Quickinit ~/.local/bin
+```
 
 
 ## Usage
