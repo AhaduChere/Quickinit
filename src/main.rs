@@ -1,8 +1,6 @@
 use dialoguer::Select;
 use std::io;
-
-mod make_c; 
-use make_c::make_c; 
+use std::process;
 
 mod make_rust;
 use make_rust::make_rust;
@@ -18,21 +16,25 @@ fn main() {
         .read_line(&mut project_name)
         .expect("Failed to read line");
 
-    // Trim newline and convert to String
-    let project_name = project_name.trim().to_string(); 
+    // Trim newline, convert to String, and checks if project name already exists
+    let project_name = project_name.trim().to_string();
+    let test_dir = std::env::current_dir().unwrap().join(&project_name);
+
+    if test_dir.exists() {
+        println!("✖ A directory with that name already exists here");
+        process::exit(1);
+    } else {}
 
     // gets programming language
     println!("Choose your language:");
-    let items = vec!["C", "Rust", "Javascript"];
+    let items = vec!["Rust", "Javascript"];
     let selection = Select::new().items(&items).default(0).interact().unwrap();
     let choice = items[selection];
     println!("{}", choice);
 
     match choice {
-        "C" => make_c(&project_name),
         "Rust" => make_rust(&project_name),
         "Javascript" => make_javascript(&project_name),
         _ => println!("Unknown choice"),
     }
 }
-

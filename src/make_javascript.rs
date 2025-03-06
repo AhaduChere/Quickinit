@@ -1,11 +1,12 @@
 use dialoguer::Select;
+use spinoff::{spinners, Color, Spinner};
 use std::fs;
 use std::process::{Command, Stdio};
 
 pub fn make_javascript(input: &str) {
-    let project_name = input.to_string();
+    let project_name = input.to_string().to_lowercase();
 
-    println!("Choose a framework");
+    println!("Choose your framework:");
     let items = vec!["Vue", "React"];
     let framework = Select::new().items(&items).default(0).interact().unwrap();
     let choice = items[framework];
@@ -15,10 +16,11 @@ pub fn make_javascript(input: &str) {
 
     match choice {
         "Vue" => {
+            let mut spinner = Spinner::new(spinners::Dots, "Creating directory...", Color::White);
             vue = true;
             react = false;
             // initialize project
-            Command::new("npm")
+            let status = Command::new("npm")
                 .arg("create")
                 .arg("vite@latest")
                 .arg(&project_name)
@@ -28,13 +30,20 @@ pub fn make_javascript(input: &str) {
                 .stdout(Stdio::null())
                 .stderr(Stdio::null())
                 .status()
-                .expect("Failed to execute command");
+                .expect(" ✖ Failed to execute npm command");
+
+            if status.success() {
+                spinner.stop_and_persist(" 󰸞", "Directory created successfully!");
+            } else {
+                spinner.stop_and_persist(" ✖", "Directory creation failed!");
+            }
         }
         "React" => {
+            let mut spinner = Spinner::new(spinners::Dots, "Creating directory...", Color::White);
             react = true;
             vue = false;
             // initialize project
-            Command::new("npm")
+            let status = Command::new("npm")
                 .arg("create")
                 .arg("vite@latest")
                 .arg(&project_name)
@@ -44,7 +53,13 @@ pub fn make_javascript(input: &str) {
                 .stdout(Stdio::null())
                 .stderr(Stdio::null())
                 .status()
-                .expect("Failed to execute command");
+                .expect(" ✖ Failed to execute npm command");
+
+            if status.success() {
+                spinner.stop_and_persist(" 󰸞", "Directory created successfully!");
+            } else {
+                spinner.stop_and_persist(" ✖", "Directory creation failed!");
+            }
         }
         _ => println!("Unknown choice"),
     }
@@ -57,7 +72,10 @@ pub fn make_javascript(input: &str) {
 
     match tw_choices {
         "Yes" => {
-            Command::new("npm")
+            let mut spinner =
+                Spinner::new(spinners::Dots, "Installing Tailwindcss...", Color::White);
+
+            let status = Command::new("npm")
                 .current_dir(&project_path)
                 .arg("install")
                 .arg("-D")
@@ -67,7 +85,14 @@ pub fn make_javascript(input: &str) {
                 .stdout(Stdio::null())
                 .stderr(Stdio::null())
                 .status()
-                .expect("Failed to install Tailwind");
+                .expect(" ✖ Failed to execute npm command");
+
+            if status.success() {
+                spinner.stop_and_persist(" 󰸞", "Tailwindcss installed successfully!");
+            } else {
+                spinner.stop_and_persist(" ✖", "Tailwindcss failed to install");
+            }
+
             if react == true {
                 let config_content = r#"module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -92,11 +117,7 @@ pub fn make_javascript(input: &str) {
 
                 // Replace App.jsx content
                 let app_content = r#"function App() {
-  return (
-    <>
-
-
-
+  return 
     </>
   )
 }
@@ -270,7 +291,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
         _ => println!("Unknown choice"),
     }
-    println!("Project setup complete");
-    println!("Now run the following:");
+    println!("");
+    println!("Run the following:");
     println!("cd {} && npm install", project_name);
 }
