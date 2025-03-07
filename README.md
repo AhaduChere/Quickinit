@@ -25,6 +25,5 @@ sudo mv Quickinit ~/.local/bin
 ## Requirements
 - **Cargo**
 - **NPM**
-- **A Nerdfont**
 ## License
 This project is licensed under the MIT License.
