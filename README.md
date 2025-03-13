@@ -1,6 +1,6 @@
 # Quickinit
 
-A command-line tool I developed to streamline project structuring and learn Rust.
+A command-line tool I'm developing to streamline project structuring and learn Rust.
 ## Installation 
 ### Download binary 
 [GitHub Releases](https://github.com/AhaduChere/Quickinit/releases/tag/v1.1.0)
