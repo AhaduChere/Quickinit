@@ -5,8 +5,8 @@ use std::process;
 mod make_rust;
 use make_rust::make_rust;
 
-mod make_javascript;
-use make_javascript::make_javascript;
+mod make_js;
+use make_js::make_js;
 
 fn main() {
     // gets Project Name
@@ -34,7 +34,7 @@ fn main() {
 
     match choice {
         "Rust" => make_rust(&project_name),
-        "Javascript" => make_javascript(&project_name),
+        "Javascript" => make_js(&project_name),
         _ => println!("Unknown choice"),
     }
 }
