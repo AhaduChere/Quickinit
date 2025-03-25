@@ -3,7 +3,7 @@
 A command-line tool I'm developing to streamline project structuring and learn Rust.
 ## Installation 
 ### Download binary 
-[GitHub Releases](https://github.com/AhaduChere/Quickinit/releases/tag/v1.1.0)
+[GitHub Releases](https://github.com/AhaduChere/Quickinit/releases/latest)
 ### Move the binary to a directory in system PATH
 
 ```bash
