@@ -5,10 +5,15 @@ use std::process;
 mod make_rust;
 use make_rust::make_rust;
 
+mod precheck;
+use precheck::precheck;
+
 mod make_js;
 use make_js::make_js;
 
 fn main() {
+    precheck();
+
     // gets Project Name
     println!("Enter Project Name:");
     let mut project_name = String::new();
@@ -23,7 +28,8 @@ fn main() {
     if test_dir.exists() {
         println!("✖ A directory with that name already exists here");
         process::exit(1);
-    } else {}
+    } else {
+    }
 
     // gets programming language
     println!("Choose your language:");
