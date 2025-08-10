@@ -13,7 +13,6 @@ use make_js::make_js;
 
 fn main() {
     precheck();
-
     // gets Project Name
     println!("Enter Project Name:");
     let mut project_name = String::new();

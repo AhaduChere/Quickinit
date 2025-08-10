@@ -16,11 +16,18 @@ sudo mv Quickinit ~/.local/bin
 
 
 ## Usage
-1. **Enter the Project Name**  
-2. **Select a Language**:    
-   - Rust  
-   - JavaScript
-3. If there are follow-up actions, follow the instructions provided. Otherwise, the setup is **done**.
+1. **Choose language**  
+   - **Rust** → *Create Rust project*  
+   - **JavaScript**  
+     1. **Choose framework**  
+        - **React**  
+          - **Use TailwindCSS?**  
+            - Yes → *Create React project with TailwindCSS*  
+            - No → *Create React project without TailwindCSS*  
+        - **Vue**  
+          - **Use TailwindCSS?**  
+            - Yes → *Create Vue project with TailwindCSS*  
+            - No → *Create Vue project without TailwindCSS* 
 
 ## Requirements
 - **Cargo**
