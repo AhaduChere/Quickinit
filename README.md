@@ -16,6 +16,10 @@ sudo mv Quickinit ~/.local/bin
 
 
 ## Usage
+0. **Pre-Check**  
+   - NPM  
+   - Cargo  
+   - Essential packages (create-vite, tailwindcss)  
 1. **Enter project name**  
 2. **Choose language**  
    - **Rust** → *Create Rust project*  
@@ -33,5 +37,7 @@ sudo mv Quickinit ~/.local/bin
 ## Requirements
 - **Cargo**
 - **NPM**
+  - **create-vite**
+  - **Tailwind CSS**
 ## License
 This project is licensed under the MIT License.
