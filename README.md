@@ -16,10 +16,11 @@ sudo mv Quickinit ~/.local/bin
 
 
 ## Usage
-1. **Choose language**  
+1. **Enter project name**  
+2. **Choose language**  
    - **Rust** → *Create Rust project*  
    - **JavaScript**  
-     1. **Choose framework**  
+     - **Choose framework**  
         - **React**  
           - **Use TailwindCSS?**  
             - Yes → *Create React project with TailwindCSS*  
